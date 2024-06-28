@@ -8,29 +8,51 @@ public class ArrayProductos : MonoBehaviour
     public GameObject[] objetos; // Arreglo de objetos
     public int objetosIndex = 0; // Índice del objeto activo
 
-    public void ActivarObjetoAleatorio()
+    void Update()
     {
-        objetosIndex = Random.Range(0, objetos.Length);
-        DesactivarTodosLosObjetos();
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            ActivateNextLight();
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            ActivatePreviousLight();
+        }
+    }
+
+    public void ActivateNextLight()
+    {
+        objetosIndex++;
+        if (objetosIndex >= objetos.Length)
+        {
+            objetosIndex = 0;
+        }
+        DeactivateAllLights();
         objetos[objetosIndex].SetActive(true);
     }
 
-    void DesactivarTodosLosObjetos()
+    public void ActivatePreviousLight()
+    {
+        objetosIndex--;
+        if (objetosIndex < 0)
+        {
+            objetosIndex = objetos.Length - 1;
+        }
+        DeactivateAllLights();
+        objetos[objetosIndex].SetActive(true);
+    }
+
+    void DeactivateAllLights()
     {
         foreach (GameObject g in objetos)
         {
             g.SetActive(false);
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+
+    public void ActivateRepeating(float t)
     {
-        
+
     }
 }

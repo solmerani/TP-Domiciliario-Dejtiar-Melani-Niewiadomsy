@@ -2499,7 +2499,7 @@ MonoBehaviour:
   botonResponder: {fileID: 1140275730}
   botonReiniciar: {fileID: 1689818576}
   botonSalir: {fileID: 2098836428}
-  panelNotificacion: {fileID: 0}
+  panelNotificacion: {fileID: 244823419}
 --- !u!4 &1674938977
 Transform:
   m_ObjectHideFlags: 0
