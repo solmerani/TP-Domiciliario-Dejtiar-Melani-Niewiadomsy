@@ -5,101 +5,119 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class ScriptJuego : MonoBehaviour
 {
-    public GameObject[] prefabsProductos;  // Array de prefabs de productos
-    Vector3 positionProduct1 = new Vector3(-86, 48, 0);
-    Vector3 positionProduct2 = new Vector3(-86, 48, 0);
-    public Transform posicionProducto1;
-    public Transform posicionProducto2;
-    public Text precioProducto1;
-    public Text precioProducto2;
-    public float suma;
-    public InputField inputResultado;
-    public Text mensajeNotificacion;
-    public Button botonResponder;
-    public Button botonReiniciar;
+    public GameObject[] ArrayProducto1;
+    public GameObject[] ArrayProducto2; // Array de prefabs de productos
+    public Text TextoSuma;
+    public Text TxtPrecio1;
+    public Text TxtPrecio2;
+    public InputField InputFieldsuma;
+    public GameObject respuesta;
+    public GameObject respuestaCorrecta;
+    public GameObject respuestaIncorrecta;
+    public Text textoNotificacion;
+    public Button botonReintentar;
     public Button botonSalir;
-    public GameObject panelNotificacion;
-    private int precio1;
-    private int precio2;
-    private GameObject instanciaProducto1;
-    private GameObject instanciaProducto2;
+    public GameObject panelNotificaciones;
+    int precio1;
+    int precio2;
+    int Precio1;
+    int Precio2;
 
     void Start()
     {
-        GenerarNuevoDesafio();
-        botonResponder.onClick.AddListener(Responder);
-        botonReiniciar.onClick.AddListener(ReiniciarDesafio);
-        botonSalir.onClick.AddListener(Salir);
+        DeactivateAll();
+        Activate();
+        panelNotificaciones.SetActive(false);
     }
-
-    void GenerarNuevoDesafio()
+    void DeactivateAll()
     {
-        if (instanciaProducto1 != null)
+        foreach (GameObject g1 in ArrayProducto1)
         {
-            Destroy(instanciaProducto1);
+            g1.SetActive(false);
         }
-        if (instanciaProducto2 != null)
+        foreach (GameObject g2 in ArrayProducto2)
         {
-            Destroy(instanciaProducto2);
-        }
 
-        instanciaProducto1 = Instantiate(prefabsProductos[Random.Range(0, prefabsProductos.Length)], posicionProducto1.position, Quaternion.identity);
-        instanciaProducto2 = Instantiate(prefabsProductos[Random.Range(0, prefabsProductos.Length)], posicionProducto2.position, Quaternion.identity);
-
-        ProductoScript scriptProducto1 = instanciaProducto1.GetComponent<ProductoScript>();
-        ProductoScript scriptProducto2 = instanciaProducto2.GetComponent<ProductoScript>();
-
-        precio1 = scriptProducto1.precioproducto;
-        precio2 = scriptProducto2.precioproducto;
-
-        precioProducto1.text = GetComponent<ProductoScript>().precioproducto.ToString();
-        precioProducto2.text = GetComponent<ProductoScript>().precioproducto.ToString();
-        inputResultado.text = "";
-        inputResultado.placeholder.GetComponent<Text>().text = "?";
-        mensajeNotificacion.text = "";
-        panelNotificacion.SetActive(false);
-        botonResponder.GetComponentInChildren<Text>().text = "Responder";
+            g2.SetActive(false); }
     }
-
-    void Responder()
+    void Activate()
     {
-        if (string.IsNullOrEmpty(inputResultado.text))
+        if (ArrayProducto1.Length == 0 || ArrayProducto2.Length == 0)
         {
-            mensajeNotificacion.text = "Debes ingresar un resultado";
-            panelNotificacion.SetActive(true);
+            Debug.LogError("Uno o ambos arrays de productos están vacíos.");
             return;
         }
 
-        int resultadoUsuario;
-        if (int.TryParse(inputResultado.text, out resultadoUsuario))
+        precio1 = Random.Range(0, ArrayProducto1.Length);
+        precio2 = Random.Range(0, ArrayProducto2.Length);
+        ArrayProducto1[precio1].transform.position = new Vector3(-112f, 0f, 0f);
+        ArrayProducto2[precio2].transform.position = new Vector3(112f, 0f, 0f);
+        ArrayProducto1[precio1].SetActive(true);
+        ArrayProducto2[precio2].SetActive(true);
+        Precio1 = ArrayProducto1[precio1].GetComponent<ProductoScript>().precioproducto;
+        Precio2 = ArrayProducto2[precio2].GetComponent<ProductoScript>().precioproducto;
+        Debug.Log("Precio1: " + Precio1 + " Precio2:  " + Precio2);
+        TxtPrecio1.text = "$" + Precio1.ToString();
+        TxtPrecio2.text = "$" + Precio2.ToString();
+        Debug.Log(gameObject.name);
+
+    }
+    public void BotonResponder()
+    {
+        Debug.Log("Boton Responder Presionado");
+        string respuestausuarioText = InputFieldsuma.text;
+        int numeroIngreso = int.Parse(respuestausuarioText);
+        Debug.Log("Texto de respuesta: " + numeroIngreso);
+
+        if (string.IsNullOrEmpty(respuestausuarioText))
         {
-            int resultadoCorrecto = precio1 + precio2;
-            if (resultadoUsuario == resultadoCorrecto)
-            {
-                mensajeNotificacion.text = "¡Correcto!";
-                botonResponder.GetComponentInChildren<Text>().text = "Reiniciar el desafío";
-            }
-            else
-            {
-                mensajeNotificacion.text = "Incorrecto. ¡Inténtalo de nuevo!";
-                botonResponder.GetComponentInChildren<Text>().text = "Volver a intentarlo";
-            }
+            Debug.Log("Respuesta esta vacia");
+            respuestaCorrecta.SetActive(false);
+            respuestaIncorrecta.SetActive(false);
+
         }
         else
         {
-            mensajeNotificacion.text = "Debes ingresar un número válido";
+            int preciototalsuma = Precio1 + Precio2;
+            Debug.Log("Respuesta del usuario" + numeroIngreso);
+            if (numeroIngreso == preciototalsuma)
+            {
+                Debug.Log("respuesta correcta");
+                respuestaCorrecta.SetActive(true);
+                respuestaIncorrecta.SetActive(false);
+            }
+            else
+            {
+                Debug.Log("Respuesta Incorrecta");
+                respuestaCorrecta.SetActive(false);
+                respuestaIncorrecta.SetActive(true);
+            }
+            panelNotificaciones.SetActive(true);
+
         }
-
-        panelNotificacion.SetActive(true);
-    }
-
-    void ReiniciarDesafio()
-    {
-        GenerarNuevoDesafio();
-    }
-
-    void Salir()
-    {
-        SceneManager.LoadScene("SeleccionarJuegos");
-    }
+    
 }
+  public void BotonReintentar()
+    {
+        panelNotificaciones.SetActive(false);
+        respuestaIncorrecta.SetActive(false);
+    InputFieldsuma.text = "";
+    DeactivateAll();
+    Activate();
+    }
+
+public void BotonReiniciar()
+    {
+        panelNotificaciones.SetActive(false);
+        respuestaCorrecta.SetActive(false );
+        InputFieldsuma.text = "";
+        DeactivateAll();
+        Activate();
+
+    }
+public void Botonsalir()
+{
+        SceneManager.LoadScene("UI");
+}
+    }
+  

@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 8496805510757694839}
   - component: {fileID: 5015250430829397103}
   m_Layer: 0
-  m_Name: Baron_Ian Ezequiel_48313128
+  m_Name: poste
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8496805510759989143
 Transform:
   m_ObjectHideFlags: 0
