@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 public class ScriptJuego : MonoBehaviour
 {
     public GameObject[] prefabsProductos;  // Array de prefabs de productos
+    Vector3 positionProduct1 = new Vector3(-86, 48, 0);
+    Vector3 positionProduct2 = new Vector3(-86, 48, 0);
     public Transform posicionProducto1;
     public Transform posicionProducto2;
     public Text precioProducto1;
     public Text precioProducto2;
+    public float suma;
     public InputField inputResultado;
     public Text mensajeNotificacion;
     public Button botonResponder;
@@ -49,9 +52,8 @@ public class ScriptJuego : MonoBehaviour
         precio1 = scriptProducto1.precioproducto;
         precio2 = scriptProducto2.precioproducto;
 
-        precioProducto1.text = precio1.ToString();
-        precioProducto2.text = precio2.ToString();
-
+        precioProducto1.text = GetComponent<ProductoScript>().precioproducto.ToString();
+        precioProducto2.text = GetComponent<ProductoScript>().precioproducto.ToString();
         inputResultado.text = "";
         inputResultado.placeholder.GetComponent<Text>().text = "?";
         mensajeNotificacion.text = "";

@@ -10,14 +10,7 @@ public class ArrayProductos : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            ActivateNextLight();
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            ActivatePreviousLight();
-        }
+        
     }
 
     public void ActivateNextLight()
