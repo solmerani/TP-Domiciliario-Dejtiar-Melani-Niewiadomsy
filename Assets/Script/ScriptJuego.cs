@@ -62,7 +62,7 @@ public class ScriptJuego : MonoBehaviour
         Debug.Log(gameObject.name);
 
     }
-    public void BotonResponder()
+    public void BotonResponderOnClick()
     {
         Debug.Log("Boton Responder Presionado");
         string respuestausuarioText = InputFieldsuma.text;
@@ -97,7 +97,7 @@ public class ScriptJuego : MonoBehaviour
         }
     
 }
-  public void BotonReintentar()
+  public void BotonReintentarOnClick()
     {
         panelNotificaciones.SetActive(false);
         respuestaIncorrecta.SetActive(false);
@@ -106,7 +106,7 @@ public class ScriptJuego : MonoBehaviour
     Activate();
     }
 
-public void BotonReiniciar()
+public void BotonReiniciarOnClick()
     {
         panelNotificaciones.SetActive(false);
         respuestaCorrecta.SetActive(false );
@@ -115,7 +115,7 @@ public void BotonReiniciar()
         Activate();
 
     }
-public void Botonsalir()
+public void BotonsalirOnClick()
 {
         SceneManager.LoadScene("UI");
 }
