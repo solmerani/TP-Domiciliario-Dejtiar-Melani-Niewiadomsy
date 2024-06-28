@@ -389,6 +389,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36af1b2b0a4b7e14dbac460a47413e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objetos: []
+  objetosIndex: 0
 --- !u!4 &874460942
 Transform:
   m_ObjectHideFlags: 0
@@ -868,12 +870,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   precioproducto: 0
-  Arrayproductos: []
-  PrecioProducto1: {fileID: 0}
-  PrecioProducto2: {fileID: 0}
-  InputPrecio: {fileID: 0}
-  Notificaciondeltexto: {fileID: 0}
-  panelmain: {fileID: 0}
 --- !u!4 &1197823573
 Transform:
   m_ObjectHideFlags: 0
@@ -1288,6 +1284,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630568744}
   m_CullTransparentMesh: 0
+--- !u!1 &1674938975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1674938977}
+  - component: {fileID: 1674938976}
+  m_Layer: 0
+  m_Name: SCRIPTJUEGO
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1674938976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674938975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 412554a08d9a08743aa6908004ad89d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1674938977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674938975}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 157.05753, y: 100.07532, z: -30.355103}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1689818574
 GameObject:
   m_ObjectHideFlags: 0
