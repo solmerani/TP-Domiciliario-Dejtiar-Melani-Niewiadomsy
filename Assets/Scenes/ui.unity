@@ -3184,7 +3184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 123.1937, y: -90.999985}
+  m_AnchoredPosition: {x: 123.1937, y: -91}
   m_SizeDelta: {x: -320.00003, y: -240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1436957251
@@ -3795,7 +3795,7 @@ MonoBehaviour:
   TextoSuma: {fileID: 1417852487}
   TxtPrecio1: {fileID: 451393962}
   TxtPrecio2: {fileID: 1178892826}
-  InputFieldsuma: {fileID: 0}
+  InputFieldsuma: {fileID: 927852182}
   respuesta: {fileID: 1140275728}
   respuestaCorrecta: {fileID: 1271010778}
   respuestaIncorrecta: {fileID: 1841319176}
