@@ -42,11 +42,7 @@ public class ScriptJuego : MonoBehaviour
     }
     void Activate()
     {
-        if (ArrayProducto1.Length == 0 || ArrayProducto2.Length == 0)
-        {
-            Debug.LogError("Uno o ambos arrays de productos están vacíos.");
-            return;
-        }
+       
 
         precio1 = Random.Range(0, ArrayProducto1.Length);
         precio2 = Random.Range(0, ArrayProducto2.Length);
@@ -68,12 +64,14 @@ public class ScriptJuego : MonoBehaviour
         string respuestausuarioText = InputFieldsuma.text;
         int numeroIngreso = int.Parse(respuestausuarioText);
         Debug.Log("Texto de respuesta: " + numeroIngreso);
+      
 
         if (string.IsNullOrEmpty(respuestausuarioText))
         {
             Debug.Log("Respuesta esta vacia");
             respuestaCorrecta.SetActive(false);
             respuestaIncorrecta.SetActive(false);
+            
 
         }
         else
@@ -85,15 +83,17 @@ public class ScriptJuego : MonoBehaviour
                 Debug.Log("respuesta correcta");
                 respuestaCorrecta.SetActive(true);
                 respuestaIncorrecta.SetActive(false);
+                textoNotificacion.text =("RESPUESTA CORRECTA");
             }
             else
             {
                 Debug.Log("Respuesta Incorrecta");
                 respuestaCorrecta.SetActive(false);
                 respuestaIncorrecta.SetActive(true);
+                textoNotificacion.text = ("RESPUESTA INCORRECTA");
             }
-            panelNotificaciones.SetActive(true);
 
+            panelNotificaciones.SetActive(true);
         }
     
 }
